@@ -1,0 +1,142 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Question 1.
+
+Create a vector called stock_prices with the following data points: 23, 27, 23, 21, 34, 24, 25, 30, 37, 30.
+
+```{r}
+stock_prices <- c(23,27,23,21,34,24,25,30,37,30)
+stock_prices
+```
+
+
+Create a vector called day_of_week, which repeats Monday to Friday twice. i.e. ‘Monday’, ‘Tuesday’, ‘Wednesday’, ‘Thursday’, ‘Friday’, ‘Monday’, ‘Tuesday’, ‘Wednesday’, ‘Thursday’, ‘Friday’.
+
+day_of_week <- rep("Monday","Tuesday","Wednesday","Thursday","Friday", each=2)
+```{r}
+day_of_week <- c("Monday","Tuesday","Wednesday","Thursday","Friday")
+day_of_week
+```
+```{r}
+day_of_week_pepper <- rep(day_of_week, times=2)
+day_of_week_pepper
+
+```
+
+
+Question 2.
+
+Create a vector called day_of_week_factor, which has the same data as day_of_week, but is of factor type.
+
+```{r}
+day_of_week_factor <- as.factor(c("Monday","Tuesday","Wednesday","Thursday","Friday","Monday","Tuesday","Wednesday","Thursday","Friday"))
+
+day_of_week_factor
+```
+
+
+Create a vector called named_stock_prices, which contains the stock prices, named by days of the week.
+
+```{r}
+named_stock_prices <- data.frame(day_of_week_factor,stock_prices)
+named_stock_prices
+```
+
+
+
+
+Question 3.
+
+Make a data frame called stock_data containing the stock price and day of the week information, and View() the result.
+
+
+```{r}
+named_stock_prices
+```
+
+
+
+
+Question 4.
+
+Make a list called stock_list with named elements as follows: the vector of stock_prices, the vector day_of_week, and the data frame you made in question 3. Choose sensible names for the list elements.
+
+```{r}
+stock_list <- list(stock_prices = stock_prices,day_of_week = day_of_week,named_stock_prices = named_stock_prices)
+stock_list
+```
+ Part 2
+In this part, you will practice selecting elements from vectors, data frames, matrices and lists.
+
+For Part 2, you need the code you’ve written for Part 1. If you’ve really struggled with this and can’t do it, then the code for Part 1 is listed underneath the hidden button below. Do try your hardest first though before using the code below!
+
+
+
+
+Question 1.
+
+Select the 4th, 5th and 6th stock prices from stock_prices.
+
+```{r}
+
+stock_prices[4:6]
+```
+
+
+Select the stock prices greater than 30 from stock_prices.
+
+```{r}
+subset(stock_prices,stock_prices > 30)
+```
+
+
+Question 2.
+
+Select the day_of_week column from the stock_data data frame.
+
+
+```{r}
+stock_data <- data.frame(stock_prices = stock_prices, day_of_week = day_of_week)
+```
+
+
+```{r}
+stock_data$day_of_week
+```
+
+
+Select the rows of the stock_data data frame where the stock_prices are less than 25.
+
+Select the 1st column of stock_data.
+
+```{r}
+stock_data[ ,1]
+```
+
+
+Select the 3rd row of stock_data.
+
+```{r}
+stock_data[3, ]
+```
+
+
+Select the 3rd element in the 1st column of stock_data.
+
+```{r}
+stock_data[3,1]
+```
+
+
+
+
+Question 4.
+
+Select the data frame from within the list of stocks.
+```{r}
+list(stock_list$named_stock_prices)
+```
+
