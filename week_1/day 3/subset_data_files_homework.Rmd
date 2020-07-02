@@ -1,0 +1,138 @@
+---
+title: "week 1 day 3 homework"
+output: html_notebook
+---
+
+```{r}
+install.packages('devtools')
+devtools::install_github('codeclan/CodeClanData')
+library(CodeClanData)
+```
+
+```{r}
+library(CodeClanData)
+
+```
+
+#viewing the data set and selecting beer part of it.
+
+
+```{r}
+CodeClanData::beer
+```
+
+
+
+
+#making beer_percent vector from code clan data set, subsetting using square brackets and selecting 3rd column [, 3]
+```{r}
+
+beer_percent <- CodeClanData::beer[ ,3]
+beer_calories <- CodeClanData::beer[ ,4]
+beer_carbohydrates <- CodeClanData::beer[ ,5]
+```
+
+
+
+
+
+```{r}
+beer_percent
+beer_calories 
+beer_carbohydrates
+```
+#calculating sum of beer_percent,omitting missing values with na.rm
+
+```{r}
+sum(beer_percent, na.rm = FALSE)
+```
+
+
+```{r}
+average_percent <- mean(beer_percent)
+average_calories <- mean(beer_calories)
+average_carbohydrates <- mean(beer_carbohydrates)
+```
+
+
+# convert beer calories to numeric? currently character
+
+
+```{r}
+beer_calories <- as.numeric(beer_calories)
+```
+
+#find min and max beer percentage and the range 
+
+
+```{r}
+min_beer_percent <- min(beer_percent)
+max_beer_percent <- max(beer_percent)
+
+range_beer_percent <- range(beer_percent)
+```
+
+```{r}
+min_beer_percent
+max_beer_percent
+
+```
+
+#splititng into high, medium and low beer percentage
+
+
+```{r}
+high_percent <- subset(beer_percent, beer_percent >= 4)
+medium_percent <- subset(beer_percent, beer_percent >= 4)
+low_percent <-subset(beer_percent, beer_percent < 4)
+```
+
+```{r}
+high_percent
+medium_percent
+low_percent
+```
+
+
+
+#plot alcohal percentage and calories
+
+```{r}
+plot(beer_calories,alcohal_percentage)
+```
+
+
+
+#temperature data
+
+```{r}
+temp_data <- CodeClanData::temp
+temp_data
+```
+
+
+```{r}
+january_average <- CodeClanData::temp[ ,1]
+
+```
+
+
+
+# mean of each month temperature utilising the colMeans function
+
+```{r}
+colMeans(temp_data, na.rm = FALSE,dims = 1 )
+```
+
+# trying to plot temperature over the year, however unable to get axis labelled. 
+
+
+```{r}
+ plot(colMeans(temp_data))
+main = "Average Temperature Over the Year"
+xlab = "time in year"
+ylab = "mean temperature"
+  
+```
+
+
