@@ -1,0 +1,243 @@
+---
+title: "Week 1 Homework"
+output: html_notebook
+---
+
+
+#library load
+
+```{r}
+library(dplyr)
+```
+
+
+Question 2
+
+2.2 
+2.2.1
+Write a function which multiploes all numbers by 15 and adds 4
+
+#use function, curly brackets encases the function
+
+```{r}
+times_15_add_4 <- function(x) {
+  x * 15 + 4
+}
+```
+
+```{r}
+times_15_add_4(1)
+```
+
+
+2.2.2 write a function that returns "bird" if input is "goose" etc and not if 
+
+
+# using the %in% function, to specify 
+```{r}
+animal_classification <- function(x){
+ if (x %in% c("goose", "duck", "pigeon")) {
+    return("bird")
+  } else {
+    return("not bird")
+  }
+}
+```
+
+
+```{r}
+animal_classification("dog")
+```
+
+
+2.2.3 write a function that multiplies by 10 
+
+# this seems to work, however if someone was to put a number in quotation marks "4", it wouldnt recognise as numerical
+```{r}
+multiply_by_10 <- function(x){
+  if ( is.numeric(x))  {
+    return(x*10)
+} else {
+  return("invalid input")
+}
+
+  }
+
+```
+
+
+
+```{r}
+multiply_by_10("bird")
+```
+
+# running character in input 
+
+```{r}
+
+  multiply_by_10("chester")
+multiply_by_10("3")
+```
+
+
+
+# if statement, else return invalid input argument 
+not sure how to make it, different to this, I presume this could be improved 
+```{r}
+multiply_x_by_10 <- function(x){
+  if ( is.numeric(x))  {
+    return(x*10)
+} else {
+  return("invalid input")
+}
+
+  }
+```
+
+```{r}
+
+?"if"
+```
+
+
+
+2.3 # if else, recode() and case_when
+
+
+2.3.1  
+For the vector below, make a new vector which is equal to “Big” every time the element of sizes is greater than 10, and equal to “Small” every time the element of sizes is less than or equal to 10.
+
+sizes <- c(13, 15, 10, 8, 22)
+
+# using case_when function
+
+```{r}
+sizes <- c(13, 15, 10, 8, 22)
+  
+
+```
+
+```{r}
+
+case_when(
+  sizes > 10 ~ "Big",
+  sizes <= 10 ~ "Small"
+          )
+```
+
+
+
+2.3.2 For the vector below convert:
+
+apple → alpaca
+
+banana → bonobo
+
+cherry → chipmunk
+
+fruit <- c("apple", "apple", "banana", "cherry", "cherry")
+
+```{r}
+fruit <- c("apple", "apple", "banana", "cherry", "cherry","chinese")
+```
+
+# using recode function, convert fruit to animal missing = null
+```{r}
+fruit_to_animal <- recode(fruit,"apple" = "alpaca", "banana" = "bonobo", "cherry" = "chipmunk", missing=NULL)
+
+fruit_to_animal
+```
+
+2.3.3
+
+The two vectors below show the ages at marriage of each member of a couple. The first elements of each vector correspond to the first couple, the second elements to the second couple, and so on.
+
+Create a new vector which is equal to:
+
+“Wife older” whenever the wife’s age is highest “Husband older” when the husband’s age is highest “Same age” when they are the same age
+
+
+# using case_when function here, greater than >, equal to ==
+```{r}
+
+wife_age <- c(29L, 30L, 36L, 31L, 22L)
+husband_age <- c(28L, 35L, 32L, 31L, 29L)
+
+
+case_when( 
+  wife_age > husband_age ~ "Wife older",
+ husband_age > wife_age  ~ "Wife older",
+ husband_age == wife_age ~ "Same age",
+ 
+  
+          )
+```
+
+2.4 Loops
+For each question on loops we’re going to use the list below:
+
+```{r}
+my_list <- list(
+  4,
+  "apple",
+  10.5,
+  c("is", "an", "apple"),
+  "apple",
+  c("i", "like", "apples"),
+  8
+)
+```
+
+
+
+
+2.4.1
+
+Use a loop to print out every element of my_list which is of type character. Decide if you need a for loop or a while loop.
+
+# using for loop here 
+```{r}
+
+
+ for (parts in my_list) {
+  if (is.character(parts)) {
+    print(parts)
+  }
+}
+  
+```
+
+# example to print just numbers instead of the characters. 
+
+
+```{r}
+for (numbers in my_list) {
+  if (is.numeric(numbers))
+    print(numbers)
+
+  
+}
+```
+
+# playing around, testing out different parts, cant seem to get this to work. 
+
+```{r}
+
+
+for (parts in my_list) {
+  if length((my_list) > 1), 
+    paste(... = my_list,sep = NULL)
+  }
+}
+
+  
+```
+
+```{r}
+for (parts in my_list) {
+  if (is.character(parts)) {
+    print(parts)
+  }
+}
+```
+
