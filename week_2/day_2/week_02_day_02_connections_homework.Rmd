@@ -1,0 +1,117 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+home_location <- Sys.getenv("HOME")
+credentials_location <- paste0(home_location,"/credentials.R")
+source(credentials_location)
+```
+
+
+
+```{r}
+library(RPostgreSQL)
+
+```
+
+# connecting the local postgresSQL 
+
+
+
+```{r}
+
+my_db_connection_mvhbdgdk <- dbConnect(drv = PostgreSQL(max.con = 2), user = wrestling_postgresql_username_local, password = wrestling_postgresql_password_local, dbname = 'mvhbdgdk', host = 'manny.db.elephantsql.com')
+
+
+```
+
+
+
+# return all the wrestlers, 
+Using the R connection you just created, write and execute a SQL query to return all the wrestlers in the wrestlers table.
+
+Explore the columns stored in the table. State which data type you think each column stores
+
+
+
+```{r}
+  dbListFields(conn = my_db_connection_mvhbdgdk, name = "wrestlers")
+```
+```{r}
+wrestler_data <- dbGetQuery(conn = my_db_connection_mvhbdgdk, statement = "SELECT * FROM wrestlers")
+wrestler_data
+```
+
+
+
+# Explore the columns stored in the table. State which data type you think each column stores.
+
+I would predict the data to be 
+
+ID
+born = VARCHAR
+name = VARCHAR
+gender = VARCHAR
+win percentage - REAL
+total matches - INT
+
+
+dbDisconnect(conn = my_db_connection)
+```{r}
+dbDisconnect(conn = my_db_connection_mvhbdgdk)
+```
+
+# creating a  REMOTE post gresSQL connection
+
+#run before anything and check that library is loaded.
+
+
+```{r}
+home_location <- Sys.getenv("HOME")
+credentials_location <- paste0(home_location,"/credentials.R")
+source(credentials_location)
+```
+
+
+
+
+```{r}
+my_db_connection_mvhbdgdk_remote <- dbConnect(drv = PostgreSQL(max.con = 2), user = wrestling_postgresql_username_remote, password = wrestling_postgresql_password_remote, dbname = 'mvhbdgdk', host = 'manny.db.elephantsql.com')
+
+```
+
+
+#list all the wrestlers of remote 
+
+
+```{r}
+dbListTables(conn = my_db_connection_mvhbdgdk_remote)
+
+```
+#list all the wrestlers of remote 
+
+
+using the "SELECT * FROM wrestlers", this is down in uppercase. 
+```{r}
+wrestler_data_remote1 <- dbGetQuery(conn = my_db_connection_mvhbdgdk_remote, statement = "SELECT * FROM wrestlers")
+
+wrestler_data_remote1
+
+
+```
+
+
+
+```{r}
+dbListFields(conn = my_db_connection_mvhbdgdk_remote, name = "wrestlers")
+```
+
+
+
+# disconnect 
+```{r}
+dbDisconnect(conn = my_db_connection)
+```
+
