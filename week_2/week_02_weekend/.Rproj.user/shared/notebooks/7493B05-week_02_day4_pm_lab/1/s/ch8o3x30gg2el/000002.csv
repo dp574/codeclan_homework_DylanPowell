@@ -1,0 +1,8 @@
+"0","```sql
+SELECT *
+FROM employees AS e
+INNER JOIN teams AS t 
+ON e.team_id = t.id 
+WHERE CAST(t.charge_cost AS INT) > 80
+ORDER BY LOWER(e.last_name) ASC
+```"

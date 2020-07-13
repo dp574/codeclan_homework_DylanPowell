@@ -1,0 +1,4 @@
+"0","SELECT *
+FROM teams as t
+LEFT JOIN employees as e
+on e.team_id = t.id "

@@ -1,0 +1,13 @@
+"0","```sql
+SELECT
+first_name,
+last_name,
+name, 
+charge_cost 
+FROM employees AS e
+INNER JOIN teams AS t
+ON e.id = t.id
+ORDER BY charge_cost ASC
+
+
+```"

@@ -1,0 +1,9 @@
+"0","```sql
+SELECT
+  fte_hours,
+  COUNT(id) AS total
+FROM employees
+WHERE fte_hours IS NOT NULL AND country = 'United States'
+GROUP BY fte_hours
+ORDER BY total DESC
+```"

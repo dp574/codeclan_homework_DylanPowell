@@ -1,0 +1,207 @@
+"0","```r
+dbGetQuery(conn = db_connect,
+           statement = \"SELECT * FROM employees\")
+```"
+"1","   id first_name    last_name                              email      ip_address       mac_address
+1   1      Ibbie     Roscrigg               iroscrigg0@google.fr   151.25.97.139 71-2F-06-DC-B0-3D
+2   2      Sylas    Smallcomb                               <NA>   211.42.36.231 92-2A-7A-C5-1A-D0
+3   4     Osmund       Kittel             okittel3@bloomberg.com    74.84.47.183 05-4A-5C-B7-20-9B
+4   5    Feodora     Dumingos            fdumingos4@bandcamp.com 156.106.229.168 FA-FB-3D-4A-CA-4E
+5   6      Peter      de Vaen                   pdevaen5@mail.ru   36.239.255.54 9D-7E-24-B8-D3-3A
+6   7       Livy       Coneau          lconeau6@sciencedaily.com    203.31.37.73 89-41-D4-83-BD-F5
+7   8      Misti         Toll                 mtoll7@addthis.com   244.254.33.46 3C-FE-3F-62-BE-3B
+8   9       <NA>    Spawforth             tspawforth8@flavors.me 167.198.128.161 D6-2F-1E-E5-A7-54
+9  10    Seymour Crumbleholme           scrumbleholme9@lycos.com  93.119.204.158 D3-50-C8-78-5C-C6
+10 11    Idaline      Pawfoot               ipawfoota@oracle.com    167.105.8.31 9B-90-28-C0-70-12
+11 12  Thorstein         Garr                     tgarrb@icio.us   125.24.15.163 DF-49-67-9C-1D-9B
+12 13      Jessa        Orman                 jormanc@eepurl.com 178.131.224.130 B2-84-61-41-1C-51
+13 14     Harlen        Cottu            hcottud@theguardian.com 200.155.252.211              <NA>
+14 15    Minette     Scamadin                mscamadine@phoca.cz  181.220.106.35 E3-43-91-F4-D6-D6
+15 16    Augusta     Andresen            aandresenf@google.co.jp    174.5.98.182 61-33-03-A4-37-EE
+16 17      Janie    Bourgaize          jbourgaizeg@imageshack.us            <NA> DA-02-51-F9-30-EE
+17 18     Feliks   Balhatchet               fbalhatcheth@usa.gov 150.208.135.178 22-83-36-1B-89-75
+18 19      Robby     Harragin                               <NA>  147.134.231.91 38-42-AE-5E-22-67
+19 20      Paula     Bloggett                pbloggettj@lulu.com   171.1.217.226 6A-CB-51-DB-76-38
+20 21       Fina        Klimt                               <NA> 139.109.193.187 04-67-C2-4D-14-2C
+21 22      Carie     Rimbault              crimbaultl@dyndns.org  220.236.66.194 FB-06-44-5B-5E-D6
+22 23    Tamqrah    Inchboard               tinchboardm@dmoz.org  85.165.196.248 56-A7-A1-42-D2-AA
+23 24     Michal        Luxen              mluxenn@bigcartel.com 146.237.196.193 59-A9-39-83-5F-73
+24 25    Corilla          Coe                  ccoeo@webnode.com 105.148.112.161 BC-51-DA-70-3B-AA
+25 26      Carin       Baggot          cbaggotp@seattletimes.com            <NA> 15-25-96-48-D9-B7
+26 27  Claiborne     de Broke             cdebrokeq@marriott.com  151.141.75.141 7B-DD-5A-CE-07-11
+27 28     Carmon    Caldayrou     ccaldayrour@barnesandnoble.com  19.182.143.152 02-91-29-A0-20-92
+28 29     Odessa        Defew               odefews@virginia.edu    253.12.35.97 88-95-83-EA-C8-70
+29 30    Orville   Cutteridge         ocutteridget@moonfruit.com   222.86.250.78 B0-3E-7A-92-C0-BA
+30 31  Milissent       Sumers                  msumersu@ehow.com   214.55.28.221 45-06-21-3D-B4-48
+31 32      Adrea      Brigham                abrighamv@opera.com 109.109.139.158 04-C7-08-B8-50-A5
+32 33        Gay         Fulk                      gfulkw@qq.com            <NA> C5-AA-88-84-02-A5
+33 34       Elsa      Smetoun                   esmetounx@360.cn   76.254.69.119 57-AA-A6-A3-31-64
+34 35   Carmelia      Freezer               cfreezery@apache.org    64.4.146.169 5E-5D-04-83-C9-31
+35 36     Rozele         Duny                               <NA>    70.14.227.56 9D-57-E1-1C-2C-0A
+36 37     Franky        Idell             fidell10@economist.com  248.126.44.179 FB-CB-23-4B-E6-0F
+37 38     Bettye       Moxted                  bmoxted11@msn.com      25.93.5.65 C0-1E-64-DA-4F-FA
+38 39    Sybilla     Lodewick              slodewick12@salon.com  133.175.71.233 61-8B-F5-4B-A1-84
+39 40   Felicdad      Flewett                  fflewett13@goo.gl  130.244.192.13 A7-97-67-9A-FA-2F
+40 41       <NA>      Dodshun                 ddodshun14@who.int  207.60.111.197 4A-3B-59-DC-C7-FA
+41 42    Felicle     McGeneay          fmcgeneay15@reference.com   238.79.82.180 2E-78-B6-D0-E1-E9
+42 43       Theo   Bolesworth tbolesworth16@networksolutions.com   83.63.251.215 5E-98-E7-71-37-B4
+43 44       <NA>     Gilluley            egilluley17@mozilla.org  195.30.239.128 A1-6E-B9-8E-B3-FB
+44 45     Verney    MacDermot          vmacdermot18@redcross.org   134.80.84.161 57-63-45-48-0D-73
+45 46   Hartwell       Schole              hschole19@tinyurl.com  133.166.115.34 B0-62-7E-DE-37-2D
+46 47    Giselle       Hlavac                 ghlavac1a@yelp.com 153.150.104.176 ED-18-FE-07-99-EB
+47 48     Barney    Yakovitch            byakovitch1b@hao123.com  111.120.43.114 47-F7-46-10-CF-93
+48 49       Rafi       Faunch             rfaunch1c@e-recht24.de    32.35.81.111 E3-29-0A-D8-9C-08
+49 50      Sydel       Frowde               sfrowde1d@tripod.com  229.188.239.19 7A-89-18-29-9F-B3
+50 51     Tawsha       Cousin                tcousin1e@hc360.com    16.61.64.143 9A-10-66-0A-99-3C
+51 52 Montgomery     Sandwick              msandwick1f@google.pl   172.4.171.167 F4-3A-F9-B2-A5-B0
+52 53  Augustina        Dreus                  adreus1g@wisc.edu            <NA> 79-AC-4E-B3-FE-BF
+53 54  Stanislas      Semmens         ssemmens1h@dagondesign.com  142.125.117.39 55-34-45-DA-F8-ED
+54 55       Brit        Gange                 bgange1i@google.it    29.58.206.56 95-D3-D3-39-24-35
+55 56     Janina      Mulcock           jmulcock1j@biglobe.ne.jp            <NA> C5-48-C8-60-DD-11
+56 57      Rheba       Booton           rbooton1k@bravesites.com  106.95.229.165 55-4A-A1-99-7D-69
+57 58    Jerrold      Hardern               jhardern1l@google.ca            <NA> A6-28-8B-0D-F1-53
+58 59       Lida   Castagnier             lcastagnier1m@ucoz.com   33.204.25.181 8B-89-CC-88-84-2B
+59 60     Adella        Drees             adrees1n@artisteer.com   149.90.251.64 8F-6F-96-9E-64-B9
+60 61    Joseito        Griss                jgriss1o@smh.com.au  24.248.155.144 35-D6-8E-49-F6-91
+61 62    Devinne    Normabell    dnormabell1p@chicagotribune.com   249.208.182.2              <NA>
+62 63    Reynard       Jonson            rjonson1q@tuttocitta.it    200.6.113.84 1E-B6-AE-EB-09-EB
+63 64      Henri       Castro                   hcastro1r@nhs.uk    211.14.4.242              <NA>
+64 65      Upton     Winstone          uwinstone1s@bloglines.com   37.21.212.130 4F-B2-AD-73-35-42
+65 66       Jeri     Evershed            jevershed1t@blogger.com    87.99.161.53 F4-4D-C2-59-24-A1
+66 67    Justinn       Bediss                jbediss1u@naver.com  150.249.93.194 B0-D0-9D-C9-50-73
+                 department team_id grade            country fte_hours pension_enrol salary pay_detail_id
+1                     Legal       9     0            Nigeria      0.25          TRUE  97667             1
+2                  Training       3     0          Macedonia      0.75         FALSE  48556             2
+3                     Legal      10     0     United Kingdom      1.00          TRUE  51200             4
+4               Engineering       2     0          Indonesia      0.50          TRUE  60460             5
+5        Product Management       2     1             Greece      0.50         FALSE  32060             6
+6                 Marketing       2     0              China      0.25         FALSE  88481             7
+7                   Support      10     0        Philippines      0.75         FALSE  81088             8
+8        Product Management       5     0             Russia      1.00         FALSE  61847             9
+9                  Training       9     0          Indonesia      0.75         FALSE  48322            10
+10                Marketing       1     0             Greece      0.25          TRUE  56593            11
+11                    Legal       1     0              China      0.75         FALSE  39926            12
+12                Marketing       3     0              China      0.25         FALSE  30138            13
+13              Engineering       4     0             Mexico      0.25            NA  75705            14
+14               Accounting       6     1          Indonesia      0.50         FALSE  84127            15
+15                    Sales       3     0              China      1.00         FALSE  42571            16
+16                 Services       6     1        Philippines      1.00          TRUE  76831            17
+17     Business Development       8     0            Ukraine      1.00         FALSE  81815            18
+18                    Legal      10     0        South Korea      0.25          TRUE  70830            19
+19 Research and Development       4     0         Mozambique      0.25          TRUE     NA            20
+20     Business Development       5     0              China      0.25          TRUE     NA            21
+21          Human Resources       4     0        Philippines      0.25          TRUE  95805            22
+22              Engineering       1     0             France      0.25         FALSE  94088            23
+23                 Training       4     0              China      0.25         FALSE  45235            24
+24                 Training       7     0             Poland      1.00         FALSE  96915            25
+25                 Training       2     0         Uzbekistan      1.00         FALSE  86428            26
+26          Human Resources       1     0              China      0.25         FALSE  50522            27
+27                  Support       1     1       South Africa      0.75          TRUE  25867            28
+28 Research and Development       1     0           Slovenia      0.25          TRUE     NA            29
+29               Accounting       6    NA              China      0.50         FALSE  77805            30
+30     Business Development       7    NA        Ivory Coast      0.75         FALSE     NA            31
+31 Research and Development       8     0              China      0.50         FALSE     NA            32
+32       Product Management      10     0              China      0.50          TRUE  90605            33
+33                    Sales       1     0         Uzbekistan      0.25         FALSE  38077            34
+34          Human Resources       8     1          Indonesia      0.50         FALSE  60459            35
+35 Research and Development       5     0              Libya      1.00          TRUE  84879            36
+36                    Legal       4     0             Sweden      1.00          TRUE     NA            37
+37              Engineering       4     0      United States      0.25          TRUE  38648            38
+38              Engineering       4     0           Colombia      0.50          TRUE  29138            39
+39               Accounting       9     0               Laos      0.75          TRUE     NA            40
+40                Marketing       1     0          Indonesia      0.25          TRUE  20898            41
+41                    Legal       8     1      United States      0.50         FALSE  31873            42
+42                 Training       2     0        Philippines      0.50          TRUE  38571            43
+43     Business Development       9     0            Ukraine      0.25          TRUE  84472            44
+44     Business Development       1     0              China      0.50          TRUE  45640            45
+45               Accounting      10     0              China      0.75          TRUE  90647            46
+46                    Legal       1     1           Colombia      0.75          TRUE  32782            47
+47       Product Management       7     0 Dominican Republic      0.25         FALSE  51593            48
+48          Human Resources       9     0             Russia      0.75          TRUE  75943            49
+49                Marketing       6     0              China      0.25          TRUE  96892            50
+50                 Training       3     0          Indonesia      1.00         FALSE  93921            51
+51               Accounting       5     0              China      0.75         FALSE  44341            52
+52                 Services       3     0           Slovenia      0.25         FALSE  67973            53
+53 Research and Development       2     0             Russia      0.25          TRUE  23926            54
+54                 Services       5     0             Russia      0.50         FALSE  97514            55
+55       Product Management       8     1             Greece      1.00          TRUE  82377            56
+56              Engineering       1     0             Brazil      0.75         FALSE  22683            57
+57          Human Resources       8     1          Argentina      0.75          TRUE  48722            58
+58                 Training       1     0              China      1.00         FALSE  79103            59
+59     Business Development       4     0              China      0.25          TRUE  95752            60
+60                Marketing       5     1             France      0.50         FALSE  36548            61
+61 Research and Development       6     0            Nigeria      1.00            NA  70742            62
+62                    Legal       5     0             Poland      0.50          TRUE  70416            63
+63                 Training       7     0               Peru      0.50            NA  46732            64
+64                  Support      10     0           Thailand      0.75          TRUE  85631            65
+65                 Training       1     1            Belgium      0.25          TRUE  47261            66
+66     Business Development       2     0             Poland      0.75          TRUE  32397            67
+   start_date
+1  2014-12-25
+2  1991-08-01
+3  2007-09-06
+4  1990-03-28
+5  1992-06-30
+6  2018-11-11
+7  2008-07-06
+8  2013-01-18
+9  2015-09-05
+10 2017-09-29
+11 2012-03-23
+12 2008-10-22
+13 2012-12-18
+14 1990-10-08
+15 2018-12-07
+16 2005-09-07
+17 2008-03-01
+18 1998-07-20
+19 2009-08-06
+20 2006-06-03
+21 2017-03-15
+22 2016-05-25
+23 1996-03-30
+24 1991-10-06
+25 2017-10-14
+26       <NA>
+27 2007-05-04
+28 1990-08-07
+29 2014-12-01
+30 2001-11-23
+31 2019-03-12
+32 2017-06-12
+33 1996-01-20
+34 1992-12-07
+35 1994-10-14
+36 1990-06-06
+37 1990-02-12
+38 1995-02-08
+39       <NA>
+40 2017-06-20
+41 1990-12-18
+42 2012-01-18
+43 1999-05-21
+44 1999-11-06
+45 2009-08-15
+46 1995-10-15
+47 2014-09-29
+48 2007-03-20
+49 1990-11-20
+50 1998-12-01
+51 1996-08-20
+52 1993-05-22
+53 2001-02-08
+54 2018-05-10
+55 2012-03-17
+56 2004-12-11
+57 2017-10-21
+58 1994-04-15
+59 2012-09-27
+60 2001-12-09
+61 1994-10-29
+62 1997-09-08
+63       <NA>
+64 1997-12-28
+65 1999-03-31
+66 2018-04-21
+ [ reached 'max' / getOption(\"max.print\") -- omitted 934 rows ]
+"

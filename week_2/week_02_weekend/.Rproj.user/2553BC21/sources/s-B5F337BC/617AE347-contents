@@ -1,0 +1,148 @@
+---
+title: "Week 2 weeekend homework"
+output: html_notebook
+---
+#libraries loaded
+
+```{r}
+library(RPostgreSQL)
+```
+
+```{r}
+home_location <- Sys.getenv("HOME")
+credentials_location <- paste0(home_location,"/credentials.R")
+source(credentials_location)
+
+```
+
+```{r}
+db_connect <- dbConnect(drv = PostgreSQL(), user = postgresql_username, password = postgresql_password, dbname = "acme_employees", host = "localhost")
+rm(postgresql_username, postgresql_password)
+```
+```{r}
+dbListTables(db_connect)
+```
+
+```{r}
+
+```
+
+
+
+```{sql connection=db_connect}
+
+```
+
+```{sql connection=db_connect}
+SELECT *
+FROM employees
+
+
+```
+
+Retrieve the records for all employees again, but this time add a field full_name containing the first_name and last_name of each employee separated by a space.
+# using concat function. 
+
+
+
+
+```{sql connection=db_connect}
+SELECT 
+  id,
+  first_name,
+  last_name,
+  CONCAT(first_name, ' ', last_name) AS full_name
+FROM employees 
+WHERE first_name IS NOT NULL AND last_name IS NOT NULL
+
+```
+
+```{sql connection=db_connect}
+SELECT *
+from teams
+```
+
+
+```{sql connection=db_connect}
+
+SELECT 
+first_name,
+last_name,
+name AS team_name
+FROM employees
+LEFT JOIN teams 
+ON employees.id = teams.id 
+
+
+```
+
+[Bit Harder] Do a breakdown of the number of employees per team (here we want two columns: team_name and num_employees). Order the table in decreasing number of employees. Include all teams, even if they have no employees.
+
+
+#cant seem to get it to work
+
+
+```{sql connection=db_connect}
+SELECT *
+  FROM employees AS e 
+  LEFT JOIN teams AS t
+  ON e.team_id = t.id
+
+```
+# the solution. 
+
+
+
+
+```{sql connection=db_connect}
+SELECT 
+t.name AS team_name,
+  COUNT(e.id) AS num_employees
+FROM teams AS t
+LEFT JOIN employees AS e
+ON e.team_id = t.id
+GROUP BY t.name
+ORDER BY num_employees DESC 
+```
+
+```{sql connection=db_connect}
+SELECT *
+FROM teams as t
+LEFT JOIN employees as e
+on e.team_id = t.id 
+```
+
+
+```{sql connection=db_connect}
+SELECT 
+```
+  
+AcmeCorp management want to send an email survey to each of their employees. However, they are worried that some of the employees may not receive the email either because their email addresses may be invalid (in that they don’t contain an ‘@’ symbol), or they may not have a stored email address at all. Can you find all these employees?
+
+```{sql connection=db_connect}
+SELECT 
+*
+  FROM employees 
+  WHERE email IS NULL OR email NOT LIKE '%@%' 
+```
+
+
+
+
+#USE OUTPUT.VAR = 'DATA2' within the sql part at top. 
+
+```{sql connection=db_connect,output.var = 'data2'}
+SELECT 
+first_name,
+last_name,
+name AS team_name
+FROM employees
+LEFT JOIN teams 
+ON employees.id = teams.id 
+```
+
+
+
+```{r}
+dbDisconnect(conn =db_connect)
+```

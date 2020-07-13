@@ -1,0 +1,5 @@
+"0","```sql
+SELECT *
+FROM employees
+WHERE start_date = '1990-01-25'
+```"

@@ -1,0 +1,5 @@
+"0","```sql
+SELECT 
+DISTINCT(diet_type)
+FROM diets
+```"

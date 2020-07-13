@@ -1,0 +1,13 @@
+"0","```sql
+SELECT 
+a.id,
+a.name,
+a.age,
+a.species,
+d.diet_type
+FROM animals AS a
+INNER JOIN diets AS d
+ON a.diet_id = d.id
+WHERE d.diet_type = 'herbivore'
+
+```"

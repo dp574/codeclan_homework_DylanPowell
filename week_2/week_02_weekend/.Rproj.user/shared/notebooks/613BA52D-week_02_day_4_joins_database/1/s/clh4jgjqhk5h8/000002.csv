@@ -1,0 +1,8 @@
+"0","```sql
+SELECT 
+  a.name,
+ d.diet_type
+FROM animals AS a
+INNER JOIN diets AS d
+ON a.diet_id = d.id
+```"

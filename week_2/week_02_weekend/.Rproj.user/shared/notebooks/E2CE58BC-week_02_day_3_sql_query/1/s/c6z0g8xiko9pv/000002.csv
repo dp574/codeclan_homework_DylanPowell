@@ -1,0 +1,6 @@
+"0","```sql
+SELECT
+ AVG(salary) AS mean_salary
+FROM employees
+WHERE department = 'Human Resources'
+```"

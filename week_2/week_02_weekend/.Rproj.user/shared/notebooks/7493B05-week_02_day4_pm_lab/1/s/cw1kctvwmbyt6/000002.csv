@@ -1,0 +1,10 @@
+"0","```sql
+SELECT 
+first_name,
+last_name,
+local_tax_code
+FROM employees 
+LEFT JOIN pay_details 
+ON employees.id = pay_details.id
+WHERE local_tax_code IS NULL
+```"
