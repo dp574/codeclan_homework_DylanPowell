@@ -1,0 +1,144 @@
+---
+title: "Tidyverse consolidation homwork"
+output: html_notebook
+---
+
+
+
+
+```{r}
+library(tidyverse)
+library(readr)
+library(readxl)
+```
+1. Load the code_clan_tweets.csv data 
+# use the read_csv files to load into data
+Find the number of rows, columns, and list all the variable names.clan_tweets
+#dimensions and #names function
+
+```{r}
+twitter_data <- read_csv("data/code_clan_tweets.csv")
+dim(twitter_data)
+names(twitter_data)
+
+
+```
+
+Q2 First, we’re going to summarise the number of likes (favorite_count) CodeClan tweets have. Create a boxplot to check for outliers.
+deaths_summarised <- summarise(deaths_grouped, 
+                               number_of_deaths = n() )
+
+
+```{r}
+favorite_count_data <- select(twitter_data, favorite_count)
+favorite_count_data
+```
+
+```{r}
+favorite_count_summary <- summarise(twitter_data, favorite_count = n())
+
+favorite_count_summary
+```
+
+```{r}
+boxplot(favorite_count_data)
+```
+
+
+Count the total number of likes (i.e. total of favorite_count), split by media type, and arrange them from most likes to least. Assume that any tweets without a listed media type are of type “text”.
+ select(name, allegiances, gender, nobility, year_of_death) %>%
+  mutate(years_survived = year_of_death - 298) %>%
+  group_by(allegiances) %>%
+  summarise(character_count = n()) %>%
+  arrange(desc(character_count))
+  
+  
+```{r}
+question_5 <- twitter_data %>%
+select(favorite_count,media_type) %>%
+         group_by(media_type)  %>%
+       summarise(favorite_count = n()) %>%
+         arrange(desc(favorite_count))
+
+```
+
+```{r}
+
+grouped_favourite_data <- twitter_data %>%
+  select(media_type,favorite_count) %>%
+  group_by(media_type, favorite_count)
+
+
+grouped_favourite_data
+```
+
+# to remove the na's we can do another line of code.
+
+```{r}
+favorite_count_no_na <- drop_na(grouped_favourite_data)
+
+
+```
+
+# then resummarise, 
+#always need to be careful when removing NA's from data set, i.e are we removing pertinent information. what is the reason this data isnt available...
+
+
+```{r}
+summarise(favorite_count_no_na, character_count =n() = )
+```
+deaths, years_survived = year_of_death
+```{r}
+grouped_favourite_data <- twitter_data %>%
+  select(media_type,favorite_count) %>%
+  summarise(favorite_count_no_na, character_count =n()  ) %>%
+  arrange(desc(favorite_count))
+
+grouped_favourite_data
+ 
+```
+
+Questio 6.  Find the mean number of characters that a CodeClan tweet contains.
+
+#would like to look at the twitter data again to understand the variables better 
+
+```{r}
+names(twitter_data)
+```
+
+```{r}
+text_twitter_data <- select(twitter_data, tweet_id, text) 
+
+
+
+```
+# this doesnt work. 
+```{r}
+mean_character_tweets <- twitter_data %>%
+  select(tweet_id, text) %>%
+  group_by(tweet_id, text) %>%
+  summarise(tweet_id, character_count =n()  ) %>%
+  arrange(desc(character_count))
+```
+
+```{r}
+mean_character_tweets
+```
+
+
+
+7. The code_clan_info.csv data file contains status_url along with other info. Load this in, and join it to the code_clan_tweets tibble, so that you have a status_url for each tweet. Decide which variable to join the tibbles on.
+
+
+```{r}
+code_clan_info <- read_csv("data/code_clan_info.csv")
+code_clan_info
+```
+
+
+```{r}
+left_join(twitter_data, code_clan_info, "tweet_id")
+```
+
+
+8. From your new joined data, create a new tibble codeclan_hashtags containing only the tweet_id and hashtags in lowercase for analysis. Keep only those tweets with hashtags.

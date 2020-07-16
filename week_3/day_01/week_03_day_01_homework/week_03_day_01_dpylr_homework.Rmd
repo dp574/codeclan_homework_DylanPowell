@@ -39,6 +39,29 @@ beverage_variables
 
 ```
 
+
+# can use is.na function. 
+
+```{r}
+drinks <- beverage_variables %>%
+  select(Beverage_category, Beverage, Beverage_prep, Calories) %>%
+  mutate(is_empty = is.na(Calories))
+
+drinks %>% filter(is_empty == TRUE)
+
+
+```
+
+
+
+```{r}
+drinks
+```
+
+```{r}
+
+```
+
 ```{r}
 calories <- select(starbucks_data, Calories)
 calories
@@ -60,19 +83,25 @@ beverage_variables
 
 Q4 Summarise the mean number of calories in each beverage_category. Which 3 drinks have the most calories? Which 3 drinks have the least? Write a small summary of your findings.
 
+# head 3 will show the top 3 
 
-deaths_summarised <- summarise(deaths_grouped, 
-                               number_of_deaths = n() )
-       deaths_grouped <-  group_by(all_deaths,allegiances)
-deaths_grouped        
-               
 ```{r}
-sort(calories,decreasing = TRUE)
+least_calories <- beverage_variables %>%
+  group_by(Beverage_category) %>%
+  summarise(mean_calories = mean(Calories)) %>%
+  arrange(desc(mean_calories)) %>%
+  head(3)
+
+least_calories
 ```
                
-               
+what is the average number of ec
 ```{r}
-arrange(starbucks_data)
+average_bev_prep <- calories %>%
+  select(Beverage_prep, Calories) %>%
+  group_by(Bevergage_prep) %>%
+  summarise(mean_cals = mean(Calories)) %>%
+  arrange(desc(mean_cals))
 
 ```
                
@@ -89,7 +118,7 @@ summary_calories
 
 ```
 
-Q6. Let’s look at this a different way. What is the average number of calories in each Beverage_prep type?
+Q5. Let’s look at this a different way. What is the average number of calories in each Beverage_prep type?
 
 
 ```{r}
@@ -100,19 +129,30 @@ average_calories
 
 
 
+Q6 
+```{r}
+avg_calories <- mean(starbucks_data$Calories)
+avg_calories
 
 
+above_avg_calories<- starbucks_data %>%
+  filter(mean_cals >= avg_calories)
+above_avg_calories
+```
 
 Q7. Which is the best type of coffee drink to get if you’re worried about consuming too many calories?
 
 
 ```{r}
 mean_calories_beverage_type <- select(starbucks_data,,Beverage, Beverage_category,Calories,) %>%
-group_by(Beverage_category) %>%
+  filter(!Beverage_category %in% c("Smoothies","Tazo® Tea")) %>%
+  group_by(Beverage_category,Beverage) %>%
   arrange(calories)
 mean_calories_beverage_type
   
 ```
+
+
 
 
 
